@@ -112,7 +112,7 @@ section:not(#assistant) .section-title::after { content: ''; position: absolute;
 <script>
 // 1. Initialize EmailJS
 (function() {
-    emailjs.init("aNDohUpb1KOb8hHnb");
+    emailjs.init("aNDohUpb1KOb8hHnbb");
 })();
 
 const chatBox = document.getElementById("chatBox");
@@ -126,7 +126,7 @@ window.addEventListener("load", () => {
         email: "system@mrtechnician.com"
     };
 
-    emailjs.send("service_vl56w0b", "template_0o5x712", visitParams)
+    emailjs.send("service_vl56w0bb", "template_0o5x7122", visitParams)
         .then(() => console.log("Visit alert sent!"))
         .catch((err) => console.log("Alert failed", err));
 
@@ -174,7 +174,7 @@ async function sendMessage() {
             email: "visitor@site.com"
         };
 
-        emailjs.send("service_vl56w0b", "template_0o5x712", emailParams);
+        emailjs.send("service_vl56w0bb", "template_0o5x7122", emailParams);
 
     } catch (e) {
         console.error("Gemini Error:", e);

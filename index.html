@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nirdeshan Kunwar | Journey</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* Keeping your original styles exactly as they were */
+#assistant { display: flex; justify-content: center; align-items: center; padding: 80px 20px; }
+#assistant .content-limit { width: 100%; max-width: 800px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.45); backdrop-filter: blur(12px); }
+#assistant .section-title { text-align: center; margin-bottom: 20px; color: #191a17; font-size: 28px; letter-spacing: 2px; }
+.chat-box { height: 350px; overflow-y: auto; background:#085e59; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 18px; margin-bottom: 20px; box-shadow: inset 0 0 15px rgba(0,0,0,0.4); scroll-behavior: smooth; }
+.user { text-align: right; color: white; margin: 10px 0; background: rgba(255,255,255,0.08); padding: 12px 16px; border-radius: 16px; display: inline-block; max-width: 75%; float: right; clear: both; }
+.bot { text-align: left; color: #a69e08; margin: 10px 0; background: rgba(212,175,55,0.08); padding: 12px 16px; border-radius: 16px; display: inline-block; max-width: 75%; float: left; clear: both; }
+.chat-input { width: 75%; padding: 14px 18px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); background: #111; color: white; outline: none; font-size: 15px; }
+.chat-btn { padding: 14px 22px; margin-left: 10px; border-radius: 14px; border: none; background: linear-gradient(135deg, #D4AF37, #b8962e); color: black; font-weight: 600; cursor: pointer; transition: 0.3s ease; }
+.chat-btn:hover { transform: translateY(-2px); }
+section:not(#assistant) .section-title { position: relative; display: inline-block; padding-bottom: 5px; }
+section:not(#assistant) .section-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background-color: gold; border-radius: 2px; }
+</style>   
+</head>
+<body>
+
+    <nav class="side-menu">
+        <div class="side-logo">About</div>
+        <div class="menu-items">
+            <a href="#hero">Home</a>
+            <a href="#journey">Journey</a>
+            <a href="#achievements">Progression</a>
+            <a href="#vision">Vision</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#assistant">Talk to Nir</a>
+        </div>
+    </nav>
+
+    <header id="hero" class="full-section">
+        <div class="content-limit">
+            <div class="photo-box">
+                <img src="IMG_20260107_122423_899.webp" alt="Nirdeshan Kunwar">
+            </div>
+            <h1 class="main-name">NIRDESHAN<br><span>KUNWAR</span></h1>
+            <p class="hero-labels">Digital Creator • Cricketer • CS Student</p>
+        </div>
+    </header>
+
+ <section id="journey" class="full-section">
+        <div class="content-limit">
+            <h2 class="section-title">JOURNEY (BIO)</h2>
+            <div class="paragraph-box">
+                <p> Nirdeshan Kunwar Born in Achham, Nepal. He began his journey with a strong foundation, passing his metric-level studies from <strong>Shree Kinder Garden Academy</strong> in Sanfebagar, Achham. He now resides in Kathmandu with his brother,<strong>Lokendra Kunwar</strong>, where he balances his academic and athletic ambitions with a disciplined lifestyle.Nirdeshan Kunwar is a student of Computer Science at GoldenGate College and a dedicated cricketer, Currently training at Kathmandu Cricket Academy in Kathmandu, Nepal. He is known for his disciplined lifestyle, strong work ethic, and commitment to continuous improvement both in sports and academics.</p>
+                <p>As a young cricketer, Nirdeshan focuses on developing his batting skills, match awareness, and overall fitness while working every day to move closer to his goal of playing cricket at a professional level. His passion for the sport is reflected in his consistent training, competitive mindset, and determination to perform under pressure.</p>
+                <p>He is the son of <strong>Devraj Kunwar and Kaushilla Devi Kunwar</strong>, whom he proudly considers the best parents and a constant source of motivation in his life.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="full-section">
+        <div class="content-limit">
+            <h2 class="section-title">PROGRESSION </h2>
+            <div class="points-box">
+                <ul>
+                    <li>Represented District at U16, U19 & 10th National Tournament.</li>
+                    <li>Winner of Player of the Tournament at SEE Camp 2082.</li>
+                    <li>Awarded Man of the Match in two matches of the same tournament.</li>
+                    <li>Scored 80 runs in the opening match and 52 runs in the final.</li>
+                    <li>Represent District in PM CUP 2082.</li>
+                    <li>Winning captain of Municipality chairperson's cup 2080.</li>
+                    <li>Awarded the Best Batsman of Goldengate International College 2082.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision" class="full-section dark-alt">
+        <div class="content-limit">
+            <h2 class="section-title gold-title">MY PHILOSOPHY</h2>
+            <p class="philosophy-quote">"Dream without limits, Work without excuses, Fail with courage, Rise with purpose, Leave a legacy that inspires."</p>
+        </div>
+    </section>
+
+    <section id="gallery" class="full-section">
+        <div class="content-limit">
+            <h2 class="section-title">VISUAL GALLERY</h2>
+            <div class="gallery-grid">
+                <div class="img-frame"><img src="IMG_20250715_154508.jpg"></div>
+                <div class="img-frame"><img src="IMG-20250520-WA0009.jpg"></div>
+                <div class="img-frame"><img src="IMG_20251211_170350.jpg"></div>
+                <div class="img-frame"><img src="1769431596060.jpg"></div>
+                <div class="img-frame"><img src="IMG_20260107_122423_899.webp"></div>
+                <div class="img-frame"><img src="IMG_20260307_175246.jpg"></div>
+                <div class="img-frame"><img src="1766114093638.jpg"></div>
+          </div>
+        </div>
+    </section>
+
+
+    <section id="assistant">
+        <div class="content-limit">
+            <h2 class="section-title">NIR'S PERSONAL ASSISTANT</h2>
+            <div class="chat-box" id="chatBox"></div>
+            <div style="display:flex; align-items:center;">
+                <input type="text" id="userInput" class="chat-input" placeholder="Talk to Nir's Assistant...">
+                <button class="chat-btn" id="sendBtn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+// 1. Initialize EmailJS
+(function() {
+    emailjs.init("aNDohUpb1KOb8hHnb");
+})();
+
+const chatBox = document.getElementById("chatBox");
+
+// --- AUTO VISIT NOTIFICATION ---
+window.addEventListener("load", () => {
+    const visitParams = {
+        user_message: "SYSTEM ALERT",
+        ai_response: "A visitor has just opened your portfolio link.",
+        name: "Visitor Alert",
+        email: "system@mrtechnician.com"
+    };
+
+    emailjs.send("service_vl56w0b", "template_0o5x712", visitParams)
+        .then(() => console.log("Visit alert sent!"))
+        .catch((err) => console.log("Alert failed", err));
+
+    chatBox.innerHTML += `<div class="bot">Hello there! I am Nir's personal assistant. How may I help you?</div>`;
+});
+
+async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const userText = input.value.trim();
+    if (!userText) return;
+
+    // Show User Message
+    chatBox.innerHTML += `<div class="user">${userText}</div>`;
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // Typing Indicator
+    const typingId = "typing-" + Date.now();
+    chatBox.innerHTML += `<div class="bot" id="${typingId}" style="opacity:.7;font-style:italic;">Thinking...</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+        // CALLING YOUR NEW BACKEND API
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userText })
+        });
+
+        const data = await response.json();
+        const aiReply = data.reply || "I'm offline right now. Try again later!";
+
+        const typingMsg = document.getElementById(typingId);
+        if (typingMsg) typingMsg.remove();
+
+        // Show AI Response
+        chatBox.innerHTML += `<div class="bot">${aiReply}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Email Notification for Conversations
+        const emailParams = {
+            user_message: userText,
+            ai_response: aiReply,
+            name: "Portfolio Visitor",
+            email: "visitor@site.com"
+        };
+
+        emailjs.send("service_vl56w0b", "template_0o5x712", emailParams);
+
+    } catch (e) {
+        console.error("Gemini Error:", e);
+        const typingMsg = document.getElementById(typingId);
+        if (typingMsg) typingMsg.innerText = "Connection error.";
+    }
+}
+
+// Enter Key Support
+document.getElementById("userInput").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
+});
+</script>
+</body>
+</html>

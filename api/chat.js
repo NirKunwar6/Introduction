@@ -7,27 +7,23 @@ export default async function handler(req, res) {
 
     if (req.method === 'OPTIONS') return res.status(200).end();
 
-    // --- DEBUGGING BLOCK ---
-    const allEnvKeys = Object.keys(process.env);
-    const hasKey = allEnvKeys.includes('AIzaSyB93hJs3t5YwPRfChyA_8XLPWiSC6z6TDQ');
+    // TEMPORARY DIRECT KEY (To bypass Vercel Settings issues)
+    const DIRECT_KEY = "AIzaSyB93hJs3t5YwPRfChyA_8XLPWiSC6z6TDQ"; 
     
-    if (!hasKey) {
-        return res.status(500).json({ 
-            reply: `Vercel Debug: I see ${allEnvKeys.length} variables, but NONE are named GEMINI_API_KEY. Available keys start with: ${allEnvKeys.slice(0, 3).join(', ')}` 
-        });
-    }
-    // --- END DEBUGGING ---
-
     try {
-        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const { message } = req.body;
+        const genAI = new GoogleGenerativeAI(DIRECT_KEY);
+        const model = genAI.getGenerativeModel({ 
+            model: "gemini-1.5-flash",
+            systemInstruction: "You are the AI assistant for Nirdeshan Kunwar. Be professional and concise."
+        });
 
         const result = await model.generateContent(message || "Hello");
         const response = await result.response;
         return res.status(200).json({ reply: response.text() });
+        
     } catch (error) {
-        return res.status(500).json({ reply: "Gemini Error: " + error.message });
+        return res.status(500).json({ reply: "Final Error: " + error.message });
     }
 }
 

@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     if (req.method === 'OPTIONS') return res.status(200).end();
 
-    const API_KEY = "AIzaSyB93hJs3t5YwPRfChyA_8XLPWiSC6z6TDQ"; 
+    const API_KEY = "AIzaSyD6mhJR2u1LGEmlI-xil7TmD_z5swU6jqY"; 
 
     try {
         const { message } = req.body;

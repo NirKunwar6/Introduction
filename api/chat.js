@@ -1,39 +1,36 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export default async function handler(req, res) {
-  // 1. Setup Headers for Security/CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  if (req.method === 'OPTIONS') return res.status(200).end();
+    if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // 2. Check API Key
-  const apiKey = process.env.AIzaSyB93hJs3t5YwPRfChyA_8XLPWiSC6z6TDQ;
-  if (!apiKey) {
-    return res.status(500).json({ reply: "Backend Error: GEMINI_API_KEY is missing in Vercel settings." });
-  }
-
-  try {
-    const { message } = req.body;
+    // --- DEBUGGING BLOCK ---
+    const allEnvKeys = Object.keys(process.env);
+    const hasKey = allEnvKeys.includes('AIzaSyB93hJs3t5YwPRfChyA_8XLPWiSC6z6TDQ');
     
-    // 3. Initialize AI
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash",
-      systemInstruction: "You are the personal assistant for Nirdeshan Kunwar. Keep it short."
-    });
+    if (!hasKey) {
+        return res.status(500).json({ 
+            reply: `Vercel Debug: I see ${allEnvKeys.length} variables, but NONE are named GEMINI_API_KEY. Available keys start with: ${allEnvKeys.slice(0, 3).join(', ')}` 
+        });
+    }
+    // --- END DEBUGGING ---
 
-    const result = await model.generateContent(message);
-    const response = await result.response;
-    const text = response.text();
+    try {
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const { message } = req.body;
 
-    return res.status(200).json({ reply: text });
-  } catch (error) {
-    console.error("AI Error:", error);
-    return res.status(500).json({ reply: "AI Error: " + error.message });
-  }
+        const result = await model.generateContent(message || "Hello");
+        const response = await result.response;
+        return res.status(200).json({ reply: response.text() });
+    } catch (error) {
+        return res.status(500).json({ reply: "Gemini Error: " + error.message });
+    }
 }
+
 
 
 

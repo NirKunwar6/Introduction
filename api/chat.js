@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   // 2. Check API Key
-  const apiKey = process.env.AIzaSyDfpGG1jtvh8GcIZJBRJ6qfAzIdyWs5DPY;
+  const apiKey = process.env.AIzaSyB93hJs3t5YwPRfChyA_8XLPWiSC6z6TDQ;
   if (!apiKey) {
     return res.status(500).json({ reply: "Backend Error: GEMINI_API_KEY is missing in Vercel settings." });
   }

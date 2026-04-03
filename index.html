@@ -3,142 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nir Kunwar | Portfolio</title>
+<title>Nir Kunwar | 3D Premium Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
+<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
+
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#050505;color:white;overflow-x:hidden;}
 
-body{
-background:#050505;
-color:white;
-overflow-x:hidden;
-}
-
-/* NAV */
+/* NAVIGATION */
 nav{
-position:fixed;
-width:100%;
-top:0;
-display:flex;
-justify-content:space-between;
-padding:20px 60px;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(12px);
-z-index:1000;
+position:fixed; width:100%; top:0;
+display:flex; justify-content:space-between;
+padding:20px 60px; background:rgba(0,0,0,0.4);
+backdrop-filter:blur(12px); z-index:1000;
 }
-
-nav h1{
-color:#D4AF37;
-font-size:1.5rem;
-}
-
-nav a{
-color:white;
-margin-left:25px;
-text-decoration:none;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#D4AF37;
-}
+nav h1{color:#D4AF37;}
+nav a{color:white;margin-left:25px;text-decoration:none;transition:0.3s;}
+nav a:hover{color:#D4AF37;}
 
 /* HERO */
 .hero{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
+height:100vh; display:flex; align-items:center; justify-content:space-between; padding:0 80px;
 }
-
-.hero h1{
-font-size:3.5rem;
-font-weight:700;
-}
-
-.glow{
-color:#D4AF37;
-text-shadow:0 0 20px #D4AF37;
-}
-
-.typing{
-margin-top:10px;
-font-size:1.5rem;
-color:#ccc;
-}
+.left{max-width:500px;}
+.left h1{font-size:3.5rem;}
+.glow{color:#D4AF37;text-shadow:0 0 25px #D4AF37;}
+.typing{margin-top:10px;color:#ccc; font-size:1.3rem;}
+#three{width:500px; height:500px; cursor:pointer;}
 
 /* SECTION */
-section{
-padding:120px 80px;
-}
-
-.title{
-font-size:2.5rem;
-margin-bottom:40px;
-color:#D4AF37;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-/* CARD */
-.card{
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:20px;
-backdrop-filter:blur(12px);
-transition:0.4s;
-cursor:pointer;
-}
-
-.card:hover{
-transform:translateY(-15px) scale(1.05);
-box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
-
-/* CONTACT */
-.contact input, .contact textarea{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:8px;
-}
-
-button{
-padding:12px 25px;
-background:#D4AF37;
-border:none;
-cursor:pointer;
-border-radius:5px;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
-/* SPACING FIX */
-.container{
-max-width:1100px;
-margin:auto;
-}
-
+section{padding:120px 80px;}
+.container{max-width:1100px;margin:auto;}
+.title{font-size:2.5rem;margin-bottom:40px;color:#D4AF37;}
+.card{background:rgba(255,255,255,0.05);padding:25px;border-radius:20px;transition:0.4s;cursor:pointer;}
+.card:hover{transform:translateY(-15px) scale(1.05); box-shadow:0 20px 40px rgba(0,0,0,0.5);}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px;}
+.contact input, .contact textarea{width:100%;padding:12px;margin:10px 0;border:none;border-radius:8px;}
+button{padding:12px 25px;background:#D4AF37;border:none;cursor:pointer;border-radius:5px;}
+button:hover{transform:scale(1.05);}
 </style>
 </head>
 
@@ -147,8 +59,10 @@ margin:auto;
 <nav>
 <h1>Nir</h1>
 <div>
-<a href="#home">Home</a>
 <a href="#about">About</a>
+<a href="#achievements">Achievements</a>
+<a href="#philosophy">Philosophy</a>
+<a href="#journey">Journey</a>
 <a href="#skills">Skills</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
@@ -157,8 +71,11 @@ margin:auto;
 
 <!-- HERO -->
 <section class="hero" id="home">
+<div class="left">
 <h1>Hello, I'm <span class="glow">Nir Kunwar</span></h1>
 <div class="typing"></div>
+</div>
+<div id="three"></div>
 </section>
 
 <!-- ABOUT -->
@@ -166,13 +83,46 @@ margin:auto;
 <div class="container">
 <h2 class="title">About Me</h2>
 <div class="card">
-<p>
-I am Nir Kunwar, a passionate cricketer and developer from Nepal.  
-I have represented my district at U16 and U19 levels, played national tournaments like PM Cup,  
-and I am currently focused on building my cricket career.  
+<p>I am a passionate cricketer and web developer from Nepal.  
+I have played U16, U19, and national tournaments.  
+Alongside cricket, I create modern, animated websites with premium design and 3D visuals.</p>
+</div>
+</div>
+</section>
 
-Alongside sports, I create modern websites and digital experiences with advanced UI and animations.
-</p>
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+<div class="container">
+<h2 class="title">My Achievements</h2>
+<div class="grid">
+<div class="card">Represented U16 district level twice</div>
+<div class="card">Played U19 national tournaments</div>
+<div class="card">PM CUP participation</div>
+<div class="card">Named Player of the Tournament in SEE Camp cricket</div>
+<div class="card">Selected in state camp U16</div>
+<div class="card">Sports scholarship recipient at GoldenGate College</div>
+</div>
+</div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+<div class="container">
+<h2 class="title">My Philosophy</h2>
+<div class="card">
+<p>"Persistence beats talent, and every setback is a setup for a stronger comeback."</p>
+</div>
+</div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+<div class="container">
+<h2 class="title">My Journey</h2>
+<div class="card">
+<p>I started playing cricket in Achham, Nepal, facing many challenges along the way.  
+Through hard work, discipline, and passion, I rose through district and national levels.  
+I now combine sports with technology, building tools and websites to help other cricketers improve their game.</p>
 </div>
 </div>
 </section>
@@ -185,6 +135,7 @@ Alongside sports, I create modern websites and digital experiences with advanced
 <div class="card">HTML</div>
 <div class="card">CSS</div>
 <div class="card">JavaScript</div>
+<div class="card">Three.js</div>
 <div class="card">GSAP Animation</div>
 </div>
 </div>
@@ -195,15 +146,8 @@ Alongside sports, I create modern websites and digital experiences with advanced
 <div class="container">
 <h2 class="title">Projects</h2>
 <div class="grid">
-<div class="card">
-<h3>Portfolio Website</h3>
-<p>Modern animated portfolio with GSAP</p>
-</div>
-
-<div class="card">
-<h3>Cricket Training App</h3>
-<p>AI-based shot guidance system for cricketers</p>
-</div>
+<div class="card">Portfolio Website with 3D hero</div>
+<div class="card">Cricket Training AI App</div>
 </div>
 </div>
 </section>
@@ -211,7 +155,7 @@ Alongside sports, I create modern websites and digital experiences with advanced
 <!-- CONTACT -->
 <section id="contact">
 <div class="container">
-<h2 class="title">Contact</h2>
+<h2 class="title">Contact Me</h2>
 <div class="card contact">
 <input type="text" placeholder="Your Name">
 <input type="email" placeholder="Your Email">
@@ -222,53 +166,84 @@ Alongside sports, I create modern websites and digital experiences with advanced
 </section>
 
 <script>
-
-/* TYPING */
+// TYPING
 const words=["Cricketer","Web Developer","Future Innovator"];
 let i=0,j=0,cur="",del=false;
-
 function type(){
-if(i<words.length){
 if(!del && j<=words[i].length) cur=words[i].substring(0,j++);
 else if(del && j>=0) cur=words[i].substring(0,j--);
-
 document.querySelector(".typing").innerHTML=cur;
-
 if(j==words[i].length) del=true;
-if(j==0 && del){
-del=false;
-i=(i+1)%words.length;
-}
-}
+if(j==0 && del){del=false;i=(i+1)%words.length;}
 setTimeout(type,100);
 }
 type();
 
-/* GSAP */
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.from(".hero h1",{
-y:80,
-opacity:0,
-duration:1.5
-});
-
-gsap.from(".typing",{
-y:50,
-opacity:0,
-delay:0.5,
-duration:1
-});
-
+// GSAP Scroll
 gsap.utils.toArray("section").forEach(sec=>{
-gsap.from(sec,{
-scrollTrigger:sec,
-y:80,
-opacity:0,
-duration:1.2
+  gsap.from(sec,{scrollTrigger:sec,y:80,opacity:0,duration:1.2});
 });
+gsap.from(".hero h1",{y:80,opacity:0,duration:1.5});
+gsap.from(".typing",{y:50,opacity:0,delay:0.5});
+
+// THREE.JS SETUP
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(45,1,0.1,1000);
+camera.position.set(0,1.5,3);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+renderer.setSize(500,500);
+document.getElementById("three").appendChild(renderer.domElement);
+
+// LIGHTS
+const light=new THREE.DirectionalLight(0xffffff,1);
+light.position.set(5,10,7);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x404040,1.5));
+
+// ORBIT CONTROLS (Mouse responsive)
+const controls=new THREE.OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true;
+controls.dampingFactor=0.05;
+controls.enablePan=false;
+controls.minDistance=2;
+controls.maxDistance=5;
+
+// LOAD CRICKET PLAYER MODEL (placeholder)
+const loader=new THREE.GLTFLoader();
+let mixer;
+loader.load(
+  'cricket_player.glb', // replace with your model
+  function(gltf){
+    const model=gltf.scene;
+    model.scale.set(1.2,1.2,1.2);
+    scene.add(model);
+
+    if(gltf.animations.length>0){
+      mixer=new THREE.AnimationMixer(model);
+      gltf.animations.forEach((clip)=>{
+        mixer.clipAction(clip).play();
+      });
+    }
+  },
+  undefined,
+  function(error){console.error(error);}
+);
+
+// HIGHLIGHT ON HOVER
+const raycaster=new THREE.Raycaster();
+const mouse=new THREE.Vector2();
+window.addEventListener('mousemove',e=>{
+  mouse.x=(e.clientX/window.innerWidth)*2-1;
+  mouse.y=-(e.clientY/window.innerHeight)*2+1;
 });
 
+function animate(){
+  requestAnimationFrame(animate);
+  if(mixer) mixer.update(0.01);
+  raycaster.setFromCamera(mouse,camera);
+  renderer.render(scene,camera);
+}
+animate();
 </script>
 
 </body>
@@ -277,4 +252,4 @@ duration:1.2
 
 
 
-    
+
